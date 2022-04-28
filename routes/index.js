@@ -1,4 +1,4 @@
-import {Router} from "express";
+/* import {Router} from "express";
 import {getProducts, getProductId, updateProduct, updateId, deleteProduct} from "../controllers/main.js";
 
 const router = Router();
@@ -25,4 +25,4 @@ router.delete("/productos/:id" ,(req, res) =>{
     res.send(deleteProduct(req.params.id))
 })
 
-export default router;
+export default router; */

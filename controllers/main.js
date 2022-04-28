@@ -1,9 +1,37 @@
-const productos = [ {"price":100, "title":"calculadora", "thumbnail":"www.calculadora.com","id":1},
-                    {"price": 150 , "title":"mochila", "thumbnail":"www.mochila.org", "id": 2},
-                    {"price": 125, "title":"lapiz", "thumbnail":"www.lapiz.com.ar", "id":3},
-                    {"price": 200, "title":"regla", "thumbnail":"www.regla.jpg.com", "id":4}]
+const {guardarProducto, listaProductos, actualizarProducto, eliminarProducto} = require("../DB/productos")
+const {listaMensajes, guardarMensaje} = require("../DB/mensajes")
 
-export function getProducts (){
+//                                      RUTA: /PRODUCTOS/
+exports.mostrarProductos = (req, res) =>{
+    const productos = listaProductos()
+    res.send(productos)
+}
+exports.guardarProductos = (req, res) =>{
+    guardarProducto(req.body);
+    res.send("Producto guardado")
+}
+exports.actualizarProductos = (req, res) =>{
+    actualizarProducto(req.body);
+    res.send("Producto actualizado")
+}
+exports.eliminarProductos = (req, res) =>{
+    eliminarProducto(req.params.id)
+    res.send("Producto eliminado")
+}
+
+//                                      RUTA: /MENSAJES/
+
+exports.mostrarMensajes =  (req, res) =>{
+    const mensajes =  listaMensajes()
+    res.send(mensajes)
+}
+exports.guardarMensajes =  (req, res) =>{
+    const mensaje = req.body;
+     guardarMensaje(mensaje)
+    res.send("Mensaje guardado")
+}
+
+/* export function getProducts (){
     try {
        return productos
     } catch (error) { 
@@ -55,4 +83,4 @@ export function deleteProduct (producto){
     } catch (error) { 
         return error
     }
-}
+} */
